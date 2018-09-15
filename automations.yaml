@@ -21,9 +21,9 @@
   action:
     # With a single service call, we don't need a '-' before service - though you can if you want to
     - service: homeassistant.turn_on
-      entity_id: switch.lampada_di_sale
-    - service: homeassistant.turn_on
       entity_id: switch.divano
+#    - service: homeassistant.turn_on
+#      entity_id: switch.lampada_di_sale
 #    - service: homeassistant.turn_on
 #      entity_id: group.soggiorno_auto_light
       
