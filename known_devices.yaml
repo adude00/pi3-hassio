@@ -1,0 +1,39 @@
+iphone_giorgio:
+  hide_if_away: false
+  icon: mdi:human-male
+  mac: BT_3C:2E:FF:65:E0:CD
+  name: Giorgio iPhone
+  picture:
+  track: true
+
+iphone_nan:
+  hide_if_away: false
+  icon: mdi:human-female
+  mac: BT_40:4D:7F:61:E3:1A
+  name: Nan iPhone
+  picture:
+  track: true
+
+stereo_yjhifi:
+  hide_if_away: false
+  icon: mdi:speaker-bluetooth
+  mac: BT_00:18:16:11:FF:94
+  name: Stereo
+  picture:
+  track: true
+
+pc_giorgio:
+  hide_if_away: false
+  icon: mdi:laptop-mac
+  mac: BT_F4:5C:89:AB:6C:04
+  name: Giorgio PC
+  picture:
+  track: false
+
+redmi:
+  hide_if_away: false
+  icon:
+  mac: BT_EC:D0:9F:1E:98:71
+  name: Redmi
+  picture:
+  track: false

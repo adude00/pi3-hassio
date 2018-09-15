@@ -1,0 +1,30 @@
+  acasa:
+    name: Presence
+    view: yes
+    entities:
+      - device_tracker.iphone_giorgio
+      - device_tracker.iphone_nan
+      - device_tracker.stereo_yjhifi
+      - device_tracker.pc_giorgio
+
+  mazio:
+    name: Amazio
+    view: yes
+    entities:
+      - group.all_switches
+      - group.all_automations
+      - switch.armadio
+
+  humans:
+    name: Humans
+    view: no
+    entities:
+      - device_tracker.iphone_giorgio
+      - device_tracker.iphone_nan
+
+  soggiorno_auto_light:
+    name: Luci automatiche soggiorno
+    view: no
+    entities:
+    - switch.divano
+    - switch.lampada_di_sale

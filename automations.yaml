@@ -1,0 +1,105 @@
+- id: 'autolucedivano'
+  alias: 'Rule 1 Light on in the evening'
+  trigger:
+    # Prefix the first line of each trigger configuration
+    # with a '-' to enter multiple
+  - platform: sun
+    event: sunset
+    offset: '-01:00:00'
+  - platform: state
+    entity_id: group.humans
+    to: 'home'
+  condition:
+    # Prefix the first line of each condition configuration
+    # with a '-'' to enter multiple
+  - condition: state
+    entity_id: group.humans
+    state: 'home'
+  - condition: time
+    after: '16:00:00'
+    before: '23:00:00'
+  action:
+    # With a single service call, we don't need a '-' before service - though you can if you want to
+    - service: homeassistant.turn_on
+      entity_id: switch.lampada_di_sale
+    - service: homeassistant.turn_on
+      entity_id: switch.divano
+#    - service: homeassistant.turn_on
+#      entity_id: group.soggiorno_auto_light
+      
+- id: 'casa_humans_si'
+  alias: Qualcuno entra
+  trigger:
+  - entity_id: group.humans
+    from: not_home
+    platform: state
+    to: home
+  condition:
+  - condition: time
+    after: '07:00:00'
+    before: '22:00:00'
+  action:
+  - entity_id: switch.presence_humans
+    service: switch.turn_on
+
+- id: 'casa_humans_no'
+  alias: Escono tutti
+  trigger:
+  - entity_id: group.humans
+    from: home
+    platform: state
+    to: not_home
+  condition: []
+  action:
+  - entity_id: switch.presence_humans
+    service: switch.turn_off
+
+
+- id: 'casa_giorgio_si'
+  alias: Giorgio entra
+  trigger:
+  - entity_id: device_tracker.iphone_giorgio
+    from: not_home
+    platform: state
+    to: home
+  condition: []
+  action:
+  - entity_id: switch.presence_giorgio
+    service: switch.turn_on
+
+- id: 'casa_giorgio_no'
+  alias: Giorgio esce
+  trigger:
+  - entity_id: device_tracker.iphone_giorgio
+    from: home
+    platform: state
+    to: not_home
+  condition: []
+  action:
+  - entity_id: switch.presence_giorgio
+    service: switch.turn_off
+
+
+- id: 'casa_nan_si'
+  alias: Nan entra
+  trigger:
+  - entity_id: device_tracker.iphone_nan
+    from: not_home
+    platform: state
+    to: home
+  condition: []
+  action:
+  - entity_id: switch.presence_nan
+    service: switch.turn_on
+
+- id: 'casa_nan_no'
+  alias: Nan esce
+  trigger:
+  - entity_id: device_tracker.iphone_nan
+    from: home
+    platform: state
+    to: not_home
+  condition: []
+  action:
+  - entity_id: switch.presence_nan
+    service: switch.turn_off

@@ -1,0 +1,285 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: 44.480886
+  longitude: 11.371394
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 0
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Rome
+  # Customization file
+  customize: !include customize.yaml
+
+# Show links to resources in log and frontend
+#introduction:
+
+logger:
+  default: info
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+# Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+# http:
+#   base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Weather prediction
+
+
+
+# Text to speech
+tts:
+  - platform: google
+
+# Cloud
+cloud:
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+
+###########
+# SENSORI #
+###########
+
+sensor:
+  - platform: yr
+  - platform: speedtest
+    monitored_conditions:
+      - ping
+      - download
+      - upload
+  - platform: time_date
+    display_options:
+      - 'date_time'
+  - platform: worldclock
+    time_zone: America/New_York
+
+##############
+# MQTT START #
+##############
+
+# 04: Divano
+  - platform: mqtt
+    name: "Divano Temperature"
+    state_topic: "tele/sonoff04/SENSOR"
+    value_template: "{{ value_json['AM2301'].Temperature }}"
+    unit_of_measurement: "°C"
+  - platform: mqtt
+    name: "Divano Humidity"
+    state_topic: "tele/sonoff04/SENSOR"
+    value_template: "{{ value_json['AM2301'].Humidity }}"
+    unit_of_measurement: "%"
+# 03: Sale
+  - platform: mqtt
+    name: "TV Temperature"
+    state_topic: "tele/sonoff03/SENSOR"
+    value_template: "{{ value_json['AM2301'].Temperature }}"
+    unit_of_measurement: "°C"
+  - platform: mqtt
+    name: "TV Humidity"
+    state_topic: "tele/sonoff03/SENSOR"
+    value_template: "{{ value_json['AM2301'].Humidity }}"
+    unit_of_measurement: "%"
+# 05: Specchio
+  - platform: mqtt
+    name: "Specchio Temp"
+    state_topic: "tele/sonoff05/SENSOR"
+    value_template: "{{ value_json['AM2301'].Temperature }}"
+    unit_of_measurement: "°C"
+  - platform: mqtt
+    name: "Specchio Humidity"
+    state_topic: "tele/sonoff05/SENSOR"
+    value_template: "{{ value_json['AM2301'].Humidity }}"
+    unit_of_measurement: "%"   
+# 06: Specchio
+  - platform: mqtt
+    name: "Armadio Temp"
+    state_topic: "tele/sonoff06/SENSOR"
+    value_template: "{{ value_json['AM2301'].Temperature }}"
+    unit_of_measurement: "°C"
+  - platform: mqtt
+    name: "Armadio Humidity"
+    state_topic: "tele/sonoff06/SENSOR"
+    value_template: "{{ value_json['AM2301'].Humidity }}"
+    unit_of_measurement: "%"  
+
+
+
+
+##########################
+# AGGIUNTE DA QUI IN POI #
+##########################
+
+device_tracker:
+  - platform: bluetooth_tracker
+    interval_seconds: 60
+    consider_home: 180
+    track_new_devices: yes
+
+zone:
+  - name: Net
+    latitude: 44.495452 
+    longitude: 11.341884
+    radius: 400
+    icon: mdi:briefcase
+
+  - name: British
+    latitude: 44.471729
+    longitude: 11.401980
+    radius: 300
+    icon: mdi:school
+    
+    
+
+panel_iframe:
+  configurator:
+    title: Configurator
+    icon: mdi:wrench
+    url: http://hassio.local:3218
+  logviewer:
+    title: Log Viewer
+    icon: mdi:glasses
+    url: http://hassio.local:4277
+  tasmoadmin:
+    title: TasmoAdmin
+    icon: mdi:tie
+    url: http://hassio.local:9541
+    
+## FIN QUI FUNZIONA
+
+# Example configuration.yaml entry
+mqtt:
+  broker: mqtt.bluetears.org
+  port: 1883
+  client_id: home-assistant-1
+  keepalive: 60
+  #username: HAUSERNAME1
+  #password: HAPASSWORD1
+  protocol: 3.1
+  birth_message:
+    topic: "tele/hass1/LWT"
+    payload: "Online"
+    qos: 1
+    retain: true
+  will_message:
+    topic: "tele/hass1/LWT"
+    payload: "Offline"
+    qos: 1
+    retain: true
+
+switch:
+  - platform: mqtt
+    name: "Divano"
+    state_topic: "stat/sonoff04/RESULT"
+    value_template: '{{ value_json["POWER"] }}'
+    command_topic: "cmnd/sonoff04/POWER"
+    availability_topic: "tele/sonoff04/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
+  - platform: mqtt
+    name: "Lampada di Sale"
+    state_topic: "stat/sonoff03/RESULT"
+    value_template: '{{ value_json["POWER"] }}'
+    command_topic: "cmnd/sonoff03/POWER"
+    availability_topic: "tele/sonoff03/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
+  - platform: mqtt
+    name: "Luce Bianca"
+    state_topic: "stat/sonoff05/RESULT"
+    value_template: '{{ value_json["POWER"] }}'
+    command_topic: "cmnd/sonoff05/POWER"
+    availability_topic: "tele/sonoff05/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
+  - platform: mqtt
+    name: "Armadio"
+    state_topic: "stat/sonoff06/RESULT"
+    value_template: '{{ value_json["POWER"] }}'
+    command_topic: "cmnd/sonoff06/POWER"
+    availability_topic: "tele/sonoff06/LWT"
+    qos: 1
+    payload_on: "ON"
+    payload_off: "OFF"
+    payload_available: "Online"
+    payload_not_available: "Offline"
+    retain: false
+    
+##########
+# CUSTOM #
+##########
+  - platform: command_line
+    switches:
+      presence_giorgio:
+        command_on: "/usr/bin/curl --header 'Content-Type: text/plain' --request POST --data 'ON' https://oh.bluetears.org/rest/items/PresenceGiorgio"
+        command_off: "/usr/bin/curl --header 'Content-Type: text/plain' --request POST --data 'OFF' https://oh.bluetears.org/rest/items/PresenceGiorgio"
+        #command_state: "curl https://oh.bluetears.org/rest/items/PresenceGiorgio/state --silent |grep OFF | wc -l"
+        #value_template: '{{ value == "1" }}'
+        friendly_name: Presenza Giorgio
+      presence_nan:
+        command_on: "/usr/bin/curl --header 'Content-Type: text/plain' --request POST --data 'ON' https://oh.bluetears.org/rest/items/PresenceNan"
+        command_off: "/usr/bin/curl --header 'Content-Type: text/plain' --request POST --data 'OFF' https://oh.bluetears.org/rest/items/PresenceNan"
+        #command_state: "curl https://oh.bluetears.org/rest/items/PresenceNan/state --silent |grep OFF | wc -l"
+        #value_template: '{{ value == "1" }}'
+        friendly_name: Presenza Nan
+      presence_humans:
+        command_on: "/usr/bin/curl --header 'Content-Type: text/plain' --request POST --data 'ON' https://oh.bluetears.org/rest/items/PresenceHumans"
+        command_off: "/usr/bin/curl --header 'Content-Type: text/plain' --request POST --data 'OFF' https://oh.bluetears.org/rest/items/PresenceHumans"
+        #command_state: "curl https://oh.bluetears.org/rest/items/PresenceHumans/state --silent |grep OFF | wc -l"
+        #value_template: '{{ value == "1" }}'
+        friendly_name: Presenza Umani
+
+
+
+
+
+
+
+
+
