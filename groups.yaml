@@ -2,7 +2,7 @@
     name: Presence
     view: yes
     entities:
-      - device_tracker.iphone_giorgio
+      - device_tracker.iphonegiorgio_b7295411fcbb43829d3986684add7f43
       - device_tracker.iphone_nan
       - device_tracker.stereo_yjhifi
       - device_tracker.pc_giorgio
@@ -19,7 +19,7 @@
     name: Humans
     view: no
     entities:
-      - device_tracker.iphone_giorgio
+      - device_tracker.iphonegiorgio_b7295411fcbb43829d3986684add7f43
       - device_tracker.iphone_nan
 
   soggiorno_auto_light:

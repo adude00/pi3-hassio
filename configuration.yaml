@@ -149,6 +149,14 @@ device_tracker:
     interval_seconds: 60
     consider_home: 180
     track_new_devices: yes
+  - platform: owntracks
+    max_gps_accuracy: 200
+    waypoints: True
+    mqtt_topic: "owntracks/#"
+    events_only: False
+#    waypoint_whitelist:
+#      - jon
+#      - ram
 
 zone:
   - name: Net
@@ -178,6 +186,10 @@ panel_iframe:
     title: TasmoAdmin
     icon: mdi:tie
     url: http://hassio.local:9541
+  sshclient:
+    title: "SSH Web Client"
+    icon: mdi:console
+    url: http://hassio.local:7681
     
 ## FIN QUI FUNZIONA
 
