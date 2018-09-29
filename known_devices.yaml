@@ -1,6 +1,13 @@
 iphonegiorgio_b7295411fcbb43829d3986684add7f43:
   hide_if_away: false
   icon: mdi:human-male
+  name: Giorgio GPS
+  picture:
+  track: true
+
+iphone_giorgio:
+  hide_if_away: false
+  icon: mdi:human-male
   mac: BT_3C:2E:FF:65:E0:CD
   name: Giorgio iPhone
   picture:
@@ -20,7 +27,7 @@ stereo_yjhifi:
   mac: BT_00:18:16:11:FF:94
   name: Stereo
   picture:
-  track: true
+  track: false
 
 pc_giorgio:
   hide_if_away: false

@@ -58,7 +58,7 @@
 - id: 'casa_giorgio_si'
   alias: Giorgio entra
   trigger:
-  - entity_id: device_tracker.iphonegiorgio_b7295411fcbb43829d3986684add7f43
+  - entity_id: device_tracker.iphone_giorgio
     from: not_home
     platform: state
     to: home
@@ -70,7 +70,7 @@
 - id: 'casa_giorgio_no'
   alias: Giorgio esce
   trigger:
-  - entity_id: device_tracker.iphonegiorgio_b7295411fcbb43829d3986684add7f43
+  - entity_id: device_tracker.iphone_giorgio
     from: home
     platform: state
     to: not_home
