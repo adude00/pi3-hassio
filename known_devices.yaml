@@ -52,3 +52,19 @@ redmi_2:
   name: Redmi
   picture:
   track: false
+
+redmi_3:
+  hide_if_away: false
+  icon:
+  mac: BT_04:D1:3A:C7:E6:E4
+  name: Redmi
+  picture:
+  track: true
+
+c3590:
+  hide_if_away: false
+  icon:
+  mac: BT_20:6E:9C:E3:08:52
+  name: C3590
+  picture:
+  track: true
