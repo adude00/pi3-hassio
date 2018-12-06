@@ -59,7 +59,7 @@ redmi_3:
   mac: BT_04:D1:3A:C7:E6:E4
   name: Redmi
   picture:
-  track: true
+  track: false
 
 c3590:
   hide_if_away: false
@@ -67,4 +67,52 @@ c3590:
   mac: BT_20:6E:9C:E3:08:52
   name: C3590
   picture:
-  track: true
+  track: false
+
+sl450h:
+  hide_if_away: false
+  icon:
+  mac: BT_7C:2F:80:B7:3C:05
+  name: SL450H
+  picture:
+  track: false
+
+franco_giammarino:
+  hide_if_away: false
+  icon:
+  mac: BT_5C:C3:07:69:E1:19
+  name: Franco Giammarino
+  picture:
+  track: false
+
+oneplus_5:
+  hide_if_away: false
+  icon:
+  mac: BT_94:65:2D:7B:CA:5D
+  name: OnePlus 5
+  picture:
+  track: false
+
+echoajn:
+  hide_if_away: false
+  icon:
+  mac: BT_C4:95:00:5E:9B:D6
+  name: Echo-AJN
+  picture:
+  track: false
+
+nokia_208:
+  hide_if_away: false
+  icon:
+  mac: BT_88:44:F6:5A:B4:86
+  name: Nokia 208
+  picture:
+  track: false
+
+amico_eleg:
+  hide_if_away: false
+  icon:
+  mac: BT_2D:18:E4:D3:62:60
+  name: AMICO ELEG
+  picture:
+  track: false

@@ -67,6 +67,13 @@ tts:
 # Cloud
 cloud:
 
+# Notify:
+notify:
+  - name: prowl
+    platform: prowl
+    api_key: a2174359a720a5fda3f4e887aaaf7bc984376d64
+
+
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
