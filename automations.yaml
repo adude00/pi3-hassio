@@ -34,10 +34,10 @@
     from: not_home
     platform: state
     to: home
-  condition:
-  - condition: time
-    after: '07:00:00'
-    before: '22:00:00'
+  condition: []
+#  - condition: time
+#    after: '07:00:00'
+#    before: '22:00:00'
   action:
   - entity_id: switch.presence_humans
     service: switch.turn_on

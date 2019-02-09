@@ -116,3 +116,83 @@ amico_eleg:
   name: AMICO ELEG
   picture:
   track: false
+
+galaxy_j5:
+  hide_if_away: false
+  icon:
+  mac: BT_F4:42:8F:83:FE:B2
+  name: Galaxy J5
+  picture:
+  track: false
+
+huawei_p_smart:
+  hide_if_away: false
+  icon:
+  mac: BT_E4:A7:C5:DF:AF:2F
+  name: HUAWEI P smart
+  picture:
+  track: false
+
+honor_7x:
+  hide_if_away: false
+  icon:
+  mac: BT_B0:E1:7E:5B:0E:8D
+  name: Honor 7X
+  picture:
+  track: false
+
+iphone_giorgio_b7295411_fcbb_4382_9d39_86684add7f43:
+  hide_if_away: false
+  icon:
+  mac:
+  name: Giorgio GPS New
+  picture:
+  track: true
+
+huawei_p20_pro:
+  hide_if_away: false
+  icon:
+  mac: BT_A4:93:3F:E5:A9:01
+  name: HUAWEI P20 Pro
+  picture:
+  track: false
+
+huawei_p8_lite_2017:
+  hide_if_away: false
+  icon:
+  mac: BT_C8:14:51:22:12:21
+  name: HUAWEI P8 lite 2017
+  picture:
+  track: false
+
+redmi_4:
+  hide_if_away: false
+  icon:
+  mac: BT_38:E6:0A:39:14:02
+  name: Redmi
+  picture:
+  track: true
+
+margherita_sosunk_gt:
+  hide_if_away: false
+  icon:
+  mac: BT_20:6E:9C:CE:A4:C0
+  name: Margherita Sosunk (GT-
+  picture:
+  track: true
+
+huawei_y5_2018:
+  hide_if_away: false
+  icon:
+  mac: BT_88:11:96:7B:F0:6D
+  name: HUAWEI Y5 2018
+  picture:
+  track: true
+
+redmi_5:
+  hide_if_away: false
+  icon:
+  mac: BT_9C:2E:A1:A6:A6:28
+  name: Redmi
+  picture:
+  track: true
